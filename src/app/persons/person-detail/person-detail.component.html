@@ -1,1 +1,46 @@
-<p>person-detail works!</p>
+<div class="container">
+    <h1 class="display-4 text-center">Cadastro de Pessoa</h1>
+    <hr>
+
+    <form #form="ngForm" autocomplete="off">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input name="PersonName" #PersonId="ngModel" [(ngModel)]="personData.PersonName"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>CPF</label>
+                    <input type="number" name="PersonCpf" #PersonId="ngModel" [(ngModel)]="personData.PersonCpf"
+                        class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input name="PersonEmail" #PersonId="ngModel" [(ngModel)]="personData.PersonEmail"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Data de Nascimento</label>
+                    <input type="date" name="PersonBirthdate" #PersonId="ngModel"
+                        [(ngModel)]="personData.PersonBirthdate" class="form-control">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <app-contacts [contactList]="personData.PersonContactListId"></app-contacts>
+        <hr>
+        <div class="row">
+            <div class="col"><button class="btn btn-block btn-success">Salvar</button></div>
+            <div class="col"><button class="btn btn-block btn-danger" (click)="returnList()">Cancelar</button></div>
+        </div>
+    </form>
+</div>

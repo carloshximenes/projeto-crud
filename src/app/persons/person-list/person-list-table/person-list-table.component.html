@@ -18,7 +18,7 @@
             <td>{{pd.PersonCpf}}</td>
             <td>{{calcAge(pd.PersonBirthdate)}} anos</td>
             <td>{{pd.PersonContactListId.length}}</td>
-            <td>Editar | Deletar</td>
+            <td><button class="btn btn-warning" (click)="editPerson(pd)">Editar</button> | <button class="btn btn-danger" (click)="deletePerson(pd)">Deletar</button></td>
         </tr>
     </tbody>
 </table>

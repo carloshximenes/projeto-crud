@@ -1,0 +1,18 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">DDD</th>
+            <th scope="col">Telefone</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contact of MyContacts">
+            <th scope="col">{{contact.ContactId}}</th>
+            <td>{{contact.ContactDdd}}</td>
+            <td>{{contact.ContactNumber}}</td>
+            <td class="text-right"><button class="btn btn-danger" (click)="deleteContact(contact)">Deletar</button></td>
+        </tr>
+    </tbody>
+</table>

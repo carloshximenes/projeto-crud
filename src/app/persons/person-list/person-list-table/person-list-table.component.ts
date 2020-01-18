@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-person-list-table',
@@ -29,9 +30,13 @@ export class PersonListTableComponent implements OnInit {
     return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  editPerson(person) {
+    this.router.navigate(['/person', person.PersonId]);    
   }
 
 }
