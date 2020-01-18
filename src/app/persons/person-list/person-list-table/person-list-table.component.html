@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Idade</th>
+            <th scope="col">Telefones</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pd of list">
+            <th scope="col">{{pd.PersonId}}</th>
+            <td>{{pd.PersonName}}</td>
+            <td>{{pd.PersonEmail}}</td>
+            <td>{{pd.PersonCpf}}</td>
+            <td>{{calcAge(pd.PersonBirthdate)}} anos</td>
+            <td>{{pd.PersonContactListId.length}}</td>
+            <td>Editar | Deletar</td>
+        </tr>
+    </tbody>
+</table>
