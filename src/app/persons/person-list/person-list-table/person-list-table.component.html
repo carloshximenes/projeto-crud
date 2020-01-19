@@ -11,14 +11,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let pd of list">
+        <tr *ngFor="let pd of service.list">
             <th scope="col">{{pd.PersonId}}</th>
             <td>{{pd.PersonName}}</td>
             <td>{{pd.PersonEmail}}</td>
             <td>{{pd.PersonCpf}}</td>
             <td>{{calcAge(pd.PersonBirthdate)}} anos</td>
-            <td>{{pd.PersonContactListId.length}}</td>
-            <td><button class="btn btn-warning" (click)="editPerson(pd)">Editar</button> | <button class="btn btn-danger" (click)="deletePerson(pd)">Deletar</button></td>
+            <td>{{pd.PersonContacts}}</td>
+            <td><button class="btn btn-warning" (click)="editPerson(pd.PersonId)">Editar</button> | <button class="btn btn-danger" (click)="deletePerson(pd.PersonId)">Deletar</button></td>
         </tr>
     </tbody>
 </table>

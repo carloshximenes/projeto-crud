@@ -1,19 +1,21 @@
 <div class="row">
+    <input type="hidden" name="ContactId" #ContactId="ngModel" [(ngModel)]="newContactNumber.ContactId">
+    <input type="hidden" name="ContactPersonId" #ContactPersonId="ngModel" [(ngModel)]="newContactNumber.ContactPersonId">
     <div class="col-md-2">
         <div class="form-group">
             <input type="number" name="ContactDdd"
-                class="form-control" placeholder="DDD">
+                class="form-control" placeholder="DDD" #ContactDdd="ngModel" [(ngModel)]="newContactNumber.ContactDdd" minlength="2" maxlength="2">
         </div>
     </div>
     <div class="col">
         <div class="form-group">
             <input type="number" name="ContactNumber"
-                class="form-control" placeholder="Telefone">
+                class="form-control" placeholder="Telefone" #ContactNumber="ngModel" [(ngModel)]="newContactNumber.ContactNumber" minlength="8" maxlength="9">
         </div>
     </div>
     <div class="col-md-2">
         <div class="form-group">
-            <button class="btn btn-success form-control" (click)="addContact(contact)">Adicionar</button>
+            <button class="btn btn-success form-control" (click)="addContact($event)">Adicionar</button>
         </div>
     </div>
 </div>

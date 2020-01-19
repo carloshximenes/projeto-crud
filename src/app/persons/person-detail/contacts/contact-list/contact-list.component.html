@@ -8,11 +8,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let contact of MyContacts">
+        <tr *ngFor="let contact of this.service.formDataContact; let i = index">
             <th scope="col">{{contact.ContactId}}</th>
             <td>{{contact.ContactDdd}}</td>
             <td>{{contact.ContactNumber}}</td>
-            <td class="text-right"><button class="btn btn-danger" (click)="deleteContact(contact)">Deletar</button></td>
+            <td class="text-right"><button class="btn btn-danger" (click)="deleteContact($event, i)">Deletar</button></td>
         </tr>
     </tbody>
 </table>

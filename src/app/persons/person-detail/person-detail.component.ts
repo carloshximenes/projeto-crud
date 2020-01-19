@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { PersonDetailService } from 'src/app/shared/person-detail.service';
 
 @Component({
   selector: 'app-person-detail',
@@ -8,34 +10,48 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PersonDetailComponent implements OnInit {
 
-  personData = {}
+  selectedId = null;
 
-  personList = [{
-    PersonId: 1,
-    PersonName: 'Carlos Henrique',
-    PersonEmail: 'carloshximenes@gmail.com',
-    PersonCpf: '04903483355',
-    PersonBirthdate: '1991-04-21',
-    PersonContactListId: [1, 2, 3, 4, 5]
-  },
-  {
-    PersonId: 2,
-    PersonName: 'Gessyca Lacerda',
-    PersonEmail: 'gessyca.lm@gmail.com',
-    PersonCpf: '04824443393',
-    PersonBirthdate: '1991-11-01',
-    PersonContactListId: [6, 7]
-  }]
-
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private service: PersonDetailService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    let id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.personData = this.personList.find(person => person.PersonId === id);
+    this.resetForm();
+    this.service.clsContactList();
+    const newId = parseInt(this.route.snapshot.paramMap.get('id'));
+    if (newId > 0)
+      this.service.getPersonDetail(newId);
+    this.selectedId = newId;
+  }
+
+  resetForm(form?: NgForm) {
+    if (form != null)
+      form.resetForm();
+    this.service.formData = {
+      PersonId: 0,
+      PersonName: '',
+      PersonCpf: '',
+      PersonBirthdate: null,
+      PersonEmail: '',
+      PersonContacts: 0
+    }
+  }
+
+  onSubmit(form: NgForm) {
+    const personId = form.value.PersonId;
+    let retorno = null;
+    this.service.postPersonDetail(form.value).subscribe(
+      res => retorno = res,
+      err => console.log(err),
+      () => { 
+        retorno != null ? this.service.postContactList(retorno.PersonId) : this.service.postContactList(personId)
+        this.resetForm(form);
+        this.returnList();
+      }
+    )
   }
 
   returnList() {
-    this.router.navigate(['list']);  
+    this.service.refreshPersonList();
+    this.router.navigate(['list']);
   }
-
 }

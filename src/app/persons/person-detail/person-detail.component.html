@@ -2,20 +2,22 @@
     <h1 class="display-4 text-center">Cadastro de Pessoa</h1>
     <hr>
 
-    <form #form="ngForm" autocomplete="off">
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <input type="hidden" name="PersonId" #PersonId="ngModel" [(ngModel)]="service.formData.PersonId">
+        <input type="hidden" name="PersonContacts" #PersonContacts="ngModel" [(ngModel)]="service.formData.PersonContacts">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label>Nome</label>
-                    <input name="PersonName" #PersonId="ngModel" [(ngModel)]="personData.PersonName"
-                        class="form-control">
+                    <input name="PersonName" #PersonName="ngModel" [(ngModel)]="service.formData.PersonName"
+                        class="form-control" required>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label>CPF</label>
-                    <input type="number" name="PersonCpf" #PersonId="ngModel" [(ngModel)]="personData.PersonCpf"
-                        class="form-control">
+                    <input type="number" name="PersonCpf" #PersonCpf="ngModel" [(ngModel)]="service.formData.PersonCpf"
+                        class="form-control" required> 
                 </div>
             </div>
         </div>
@@ -23,23 +25,23 @@
             <div class="col">
                 <div class="form-group">
                     <label>E-mail</label>
-                    <input name="PersonEmail" #PersonId="ngModel" [(ngModel)]="personData.PersonEmail"
-                        class="form-control">
+                    <input name="PersonEmail" #PersonEmail="ngModel" [(ngModel)]="service.formData.PersonEmail"
+                        class="form-control" required>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label>Data de Nascimento</label>
-                    <input type="date" name="PersonBirthdate" #PersonId="ngModel"
-                        [(ngModel)]="personData.PersonBirthdate" class="form-control">
+                    <input type="date" name="PersonBirthdate" #PersonBirthdate="ngModel"
+                        [(ngModel)]="service.formData.PersonBirthdate" class="form-control" required>
                 </div>
             </div>
         </div>
         <hr>
-        <app-contacts [contactList]="personData.PersonContactListId"></app-contacts>
+        <app-contacts></app-contacts>
         <hr>
         <div class="row">
-            <div class="col"><button class="btn btn-block btn-success">Salvar</button></div>
+            <div class="col"><button class="btn btn-block btn-success" type="submit" [disabled]="form.invalid">Salvar</button></div>
             <div class="col"><button class="btn btn-block btn-danger" (click)="returnList()">Cancelar</button></div>
         </div>
     </form>

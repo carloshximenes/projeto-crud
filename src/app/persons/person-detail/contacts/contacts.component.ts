@@ -7,9 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ContactsComponent implements OnInit {
 
-  @Input()
-    contactList: Array<any>;
-
   constructor() { }
 
   ngOnInit() {

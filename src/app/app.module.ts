@@ -14,6 +14,7 @@ import { PersonDetailService } from './shared/person-detail.service';
 import { ContactsComponent } from './persons/person-detail/contacts/contacts.component';
 import { ContactMenuComponent } from './persons/person-detail/contacts/contact-menu/contact-menu.component';
 import { ContactListComponent } from './persons/person-detail/contacts/contact-list/contact-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ContactListComponent } from './persons/person-detail/contacts/contact-l
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [PersonDetailService],
   bootstrap: [AppComponent]

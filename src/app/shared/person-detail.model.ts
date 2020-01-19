@@ -1,8 +1,15 @@
 export class PersonDetail {
-    PersonId: Number;
+    PersonId: number;
     PersonName: String;
     PersonCpf: String;
-    PersonBirthday: Date;
+    PersonBirthdate: Date;
     PersonEmail: String;
-    PersonContacts: Array<any>;
+    PersonContacts: number;
+}
+
+export class ContactDetail {
+    ContactId: number;
+    ContactDdd: String;
+    ContactNumber: String;
+    ContactPersonId: number;
 }

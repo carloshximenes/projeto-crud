@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PersonDetailService } from 'src/app/shared/person-detail.service';
 
 @Component({
   selector: 'app-person-list-menu',
@@ -8,9 +9,22 @@ import { Router } from '@angular/router';
 })
 export class PersonListMenuComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  searchName = '';
+  searchCpf = '';
+
+  constructor(private router: Router, private service: PersonDetailService) { }
 
   ngOnInit() {
+  }
+
+  resetSearchInputs() {
+    this.searchName = '';
+    this.searchCpf = '';
+  }
+
+  searchPerson() {
+    //this.service.filterList(this.searchName, this.searchCpf);
+    this.service.refreshPersonList(this.searchName, this.searchCpf);
   }
 
   addPerson() {
