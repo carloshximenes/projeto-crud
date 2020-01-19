@@ -14,11 +14,6 @@ export class PersonDetailService {
 
   constructor(private http: HttpClient) { }
 
-  filterList(name: string, cpf: string) {
-    const filteredList = this.list.filter(item => item.PersonName.includes(name) && item.PersonCpf.includes(cpf));
-    this.list = [...filteredList];
-  }
-
   addContactList(contactList: ContactDetail) {
     this.formDataContact.push(contactList);
   }
@@ -54,7 +49,6 @@ export class PersonDetailService {
       .toPromise()
       .then(res => {
         this.list = res as PersonDetail[];
-        console.log(name, cpf);
         if (name !== undefined && cpf !== null) {
           const filteredList = this.list.filter(item => item.PersonName.includes(name) && item.PersonCpf.includes(cpf));
           this.list = [...filteredList];
